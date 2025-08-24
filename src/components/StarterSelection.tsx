@@ -17,10 +17,10 @@ const StarterSelection: React.FC<StaterSelectionProps> = ({ onSelect }) => {
 
     return (
         <div className="p-6">
-            <h2 className="text-xl font-bold mb-4">Escolha sua linguagem inicial</h2>
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 gap-4 justify-items-center">
+            <h2 className="text-xl text-center font-bold mb-4">Escolha sua linguagem inicial</h2>
+            <div className="flex gap-5 justify-center">
                 {langsMock
-                    .filter((lang) => !lang.owned || lang.id <= 3)
+                    .filter((lang) => lang.id <= 3)
                     .map((lang) => (
                         <div
                             key={lang.id} 
@@ -32,6 +32,7 @@ const StarterSelection: React.FC<StaterSelectionProps> = ({ onSelect }) => {
                             <LangCard 
                                 id={lang.id}
                                 name={lang.name}
+                                type={lang.type}
                                 owned={true}
                                 icon={lang.icon}
                             />

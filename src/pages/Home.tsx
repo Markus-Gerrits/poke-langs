@@ -26,6 +26,7 @@ const Home: React.FC = () => {
               key={lang.id}
               id={lang.id}
               name={lang.name}
+              type={lang.type}
               owned={true}
               icon={lang.icon}
             />

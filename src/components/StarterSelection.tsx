@@ -32,9 +32,10 @@ const StarterSelection: React.FC<StaterSelectionProps> = ({ onSelect }) => {
                             <LangCard 
                                 id={lang.id}
                                 name={lang.name}
-                                type={lang.type}
+                                category={lang.category}
                                 owned={true}
                                 icon={lang.icon}
+                                rarity={lang.rarity}
                             />
                         </div>        
                 ))}

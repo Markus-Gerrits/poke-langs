@@ -1,595 +1,356 @@
 {
-    "languages": [
-        {
-            "id": 1,
-            "dexNumber": 1,
-            "slug": "javascript",
-            "name": "JavaScript",
-            "category": "front-end",
-            "subTypes": [
-                "dynamic",
-                "multi-paradigm"
-            ],
-            "description": "Linguagem popular para web, ampla comunidade e ecossistema.",
-            "evolvesFrom": null,
-            "evolvesTo": 2,
-            "evolutionLevel": 10,
-            "baseStats": {
-                "attack": 55,
-                "defense": 45,
-                "speed": 70
-            },
-            "skills": [
-                {
-                    "id": "fire-script",
-                    "name": "Fire Script",
-                    "unlockLevel": 5
-                },
-                {
-                    "id": "async-blast",
-                    "name": "Async Blast",
-                    "unlockLevel": 10
-                }
-            ]
-        },
-        {
-            "id": 2,
-            "dexNumber": 2,
-            "slug": "typescript",
-            "name": "TypeScript",
-            "category": "front-end",
-            "subTypes": [
-                "typed",
-                "oop"
-            ],
-            "description": "Superset do JavaScript com tipagem estática.",
-            "evolvesFrom": 1,
-            "evolvesTo": null,
-            "evolutionLevel": null,
-            "baseStats": {
-                "attack": 65,
-                "defense": 60,
-                "speed": 65
-            },
-            "skills": [
-                {
-                    "id": "type-shield",
-                    "name": "Type Shield",
-                    "unlockLevel": 5
-                },
-                {
-                    "id": "strict-mode",
-                    "name": "Strict Mode",
-                    "unlockLevel": 10
-                }
-            ]
-        },
-        {
-            "id": 3,
-            "dexNumber": 3,
-            "slug": "c",
-            "name": "C",
-            "category": "system",
-            "subTypes": [
-                "low-level",
-                "procedural"
-            ],
-            "description": "Linguagem clássica usada em sistemas e performance.",
-            "evolvesFrom": null,
-            "evolvesTo": 4,
-            "evolutionLevel": 12,
-            "baseStats": {
-                "attack": 70,
-                "defense": 60,
-                "speed": 40
-            },
-            "skills": [
-                {
-                    "id": "pointer-strike",
-                    "name": "Pointer Strike",
-                    "unlockLevel": 5
-                }
-            ]
-        },
-        {
-            "id": 4,
-            "dexNumber": 4,
-            "slug": "cpp",
-            "name": "C++",
-            "category": "system",
-            "subTypes": [
-                "oop",
-                "multi-paradigm"
-            ],
-            "description": "Evolução do C com suporte a orientação a objetos.",
-            "evolvesFrom": 3,
-            "evolvesTo": 5,
-            "evolutionLevel": 15,
-            "baseStats": {
-                "attack": 80,
-                "defense": 70,
-                "speed": 50
-            },
-            "skills": [
-                {
-                    "id": "class-slash",
-                    "name": "Class Slash",
-                    "unlockLevel": 5
-                }
-            ]
-        },
-        {
-            "id": 5,
-            "dexNumber": 5,
-            "slug": "csharp",
-            "name": "C#",
-            "category": "back-end",
-            "subTypes": [
-                "oop",
-                ".net"
-            ],
-            "description": "Linguagem moderna da Microsoft, focada em produtividade.",
-            "evolvesFrom": 4,
-            "evolvesTo": null,
-            "evolutionLevel": null,
-            "baseStats": {
-                "attack": 75,
-                "defense": 80,
-                "speed": 55
-            },
-            "skills": [
-                {
-                    "id": "linq-storm",
-                    "name": "LINQ Storm",
-                    "unlockLevel": 10
-                }
-            ]
-        },
-        {
-            "id": 6,
-            "dexNumber": 6,
-            "slug": "python",
-            "name": "Python",
-            "category": "back-end",
-            "subTypes": [
-                "general-purpose",
-                "multi-paradigm"
-            ],
-            "description": "Muito usado em ciência de dados, automações e back-end.",
-            "evolvesFrom": null,
-            "evolvesTo": 7,
-            "evolutionLevel": 14,
-            "baseStats": {
-                "attack": 60,
-                "defense": 50,
-                "speed": 40
-            },
-            "skills": [
-                {
-                    "id": "data-crunch",
-                    "name": "Data Crunch",
-                    "unlockLevel": 5
-                }
-            ]
-        },
-        {
-            "id": 7,
-            "dexNumber": 7,
-            "slug": "julia",
-            "name": "Julia",
-            "category": "data-science",
-            "subTypes": [
-                "scientific",
-                "high-performance"
-            ],
-            "description": "Criada para alto desempenho em cálculos científicos.",
-            "evolvesFrom": 6,
-            "evolvesTo": null,
-            "evolutionLevel": null,
-            "baseStats": {
-                "attack": 75,
-                "defense": 55,
-                "speed": 60
-            },
-            "skills": [
-                {
-                    "id": "matrix-burst",
-                    "name": "Matrix Burst",
-                    "unlockLevel": 10
-                }
-            ]
-        },
-        {
-            "id": 8,
-            "dexNumber": 8,
-            "slug": "java",
-            "name": "Java",
-            "category": "back-end",
-            "subTypes": [
-                "oop",
-                "general-purpose"
-            ],
-            "description": "Muito usado em grandes sistemas e Android.",
-            "evolvesFrom": null,
-            "evolvesTo": 9,
-            "evolutionLevel": 16,
-            "baseStats": {
-                "attack": 65,
-                "defense": 70,
-                "speed": 50
-            },
-            "skills": [
-                {
-                    "id": "jvm-armor",
-                    "name": "JVM Armor",
-                    "unlockLevel": 5
-                }
-            ]
-        },
-        {
-            "id": 9,
-            "dexNumber": 9,
-            "slug": "kotlin",
-            "name": "Kotlin",
-            "category": "mobile",
-            "subTypes": [
-                "modern",
-                "oop"
-            ],
-            "description": "Linguagem oficial do Android, moderna e concisa.",
-            "evolvesFrom": 8,
-            "evolvesTo": null,
-            "evolutionLevel": null,
-            "baseStats": {
-                "attack": 70,
-                "defense": 65,
-                "speed": 60
-            },
-            "skills": [
-                {
-                    "id": "null-safety",
-                    "name": "Null Safety",
-                    "unlockLevel": 8
-                }
-            ]
-        },
-        {
-            "id": 10,
-            "dexNumber": 10,
-            "slug": "php",
-            "name": "PHP",
-            "category": "back-end",
-            "subTypes": [
-                "web",
-                "scripting"
-            ],
-            "description": "Muito usado no desenvolvimento web, especialmente WordPress.",
-            "evolvesFrom": null,
-            "evolvesTo": 11,
-            "evolutionLevel": 12,
-            "baseStats": {
-                "attack": 50,
-                "defense": 40,
-                "speed": 60
-            },
-            "skills": [
-                {
-                    "id": "web-blast",
-                    "name": "Web Blast",
-                    "unlockLevel": 5
-                }
-            ]
-        },
-        {
-            "id": 11,
-            "dexNumber": 11,
-            "slug": "hack",
-            "name": "Hack",
-            "category": "back-end",
-            "subTypes": [
-                "typed",
-                "web"
-            ],
-            "description": "Criada pelo Facebook, evolução do PHP.",
-            "evolvesFrom": 10,
-            "evolvesTo": null,
-            "evolutionLevel": null,
-            "baseStats": {
-                "attack": 65,
-                "defense": 55,
-                "speed": 70
-            },
-            "skills": [
-                {
-                    "id": "async-threads",
-                    "name": "Async Threads",
-                    "unlockLevel": 8
-                }
-            ]
-        },
-        {
-            "id": 12,
-            "dexNumber": 12,
-            "slug": "ruby",
-            "name": "Ruby",
-            "category": "back-end",
-            "subTypes": [
-                "oop",
-                "web"
-            ],
-            "description": "Muito usado em web (Rails), elegante e expressiva.",
-            "evolvesFrom": null,
-            "evolvesTo": 13,
-            "evolutionLevel": 14,
-            "baseStats": {
-                "attack": 55,
-                "defense": 45,
-                "speed": 65
-            },
-            "skills": [
-                {
-                    "id": "rails-speed",
-                    "name": "Rails Speed",
-                    "unlockLevel": 5
-                }
-            ]
-        },
-        {
-            "id": 13,
-            "dexNumber": 13,
-            "slug": "crystal",
-            "name": "Crystal",
-            "category": "back-end",
-            "subTypes": [
-                "compiled",
-                "modern"
-            ],
-            "description": "Inspirada em Ruby, mas compilada e com tipagem forte.",
-            "evolvesFrom": 12,
-            "evolvesTo": null,
-            "evolutionLevel": null,
-            "baseStats": {
-                "attack": 70,
-                "defense": 60,
-                "speed": 70
-            },
-            "skills": [
-                {
-                    "id": "compiled-strike",
-                    "name": "Compiled Strike",
-                    "unlockLevel": 8
-                }
-            ]
-        },
-        {
-            "id": 14,
-            "dexNumber": 14,
-            "slug": "go",
-            "name": "Go",
-            "category": "back-end",
-            "subTypes": [
-                "concurrent",
-                "compiled"
-            ],
-            "description": "Criada pelo Google, rápida e eficiente para serviços escaláveis.",
-            "evolvesFrom": null,
-            "evolvesTo": 15,
-            "evolutionLevel": 15,
-            "baseStats": {
-                "attack": 65,
-                "defense": 60,
-                "speed": 75
-            },
-            "skills": [
-                {
-                    "id": "goroutine-rush",
-                    "name": "Goroutine Rush",
-                    "unlockLevel": 5
-                }
-            ]
-        },
-        {
-            "id": 15,
-            "dexNumber": 15,
-            "slug": "rust",
-            "name": "Rust",
-            "category": "system",
-            "subTypes": [
-                "memory-safe",
-                "modern"
-            ],
-            "description": "Segura e rápida, popular em sistemas e aplicações críticas.",
-            "evolvesFrom": 14,
-            "evolvesTo": null,
-            "evolutionLevel": null,
-            "baseStats": {
-                "attack": 80,
-                "defense": 80,
-                "speed": 65
-            },
-            "skills": [
-                {
-                    "id": "borrow-check",
-                    "name": "Borrow Check",
-                    "unlockLevel": 8
-                }
-            ]
-        },
-        {
-            "id": 16,
-            "dexNumber": 16,
-            "slug": "r",
-            "name": "R",
-            "category": "data-science",
-            "subTypes": [
-                "statistics",
-                "analysis"
-            ],
-            "description": "Muito usada em estatística e visualização de dados.",
-            "evolvesFrom": null,
-            "evolvesTo": 17,
-            "evolutionLevel": 10,
-            "baseStats": {
-                "attack": 50,
-                "defense": 45,
-                "speed": 40
-            },
-            "skills": [
-                {
-                    "id": "data-plot",
-                    "name": "Data Plot",
-                    "unlockLevel": 5
-                }
-            ]
-        },
-        {
-            "id": 17,
-            "dexNumber": 17,
-            "slug": "scala",
-            "name": "Scala",
-            "category": "back-end",
-            "subTypes": [
-                "functional",
-                "oop"
-            ],
-            "description": "Combina programação funcional e OOP na JVM.",
-            "evolvesFrom": 16,
-            "evolvesTo": null,
-            "evolutionLevel": null,
-            "baseStats": {
-                "attack": 70,
-                "defense": 60,
-                "speed": 50
-            },
-            "skills": [
-                {
-                    "id": "actor-model",
-                    "name": "Actor Model",
-                    "unlockLevel": 8
-                }
-            ]
-        },
-        {
-            "id": 18,
-            "dexNumber": 18,
-            "slug": "swift",
-            "name": "Swift",
-            "category": "mobile",
-            "subTypes": [
-                "modern",
-                "safe"
-            ],
-            "description": "Linguagem oficial da Apple para iOS e macOS.",
-            "evolvesFrom": null,
-            "evolvesTo": 19,
-            "evolutionLevel": 12,
-            "baseStats": {
-                "attack": 65,
-                "defense": 55,
-                "speed": 75
-            },
-            "skills": [
-                {
-                    "id": "swift-ui",
-                    "name": "Swift UI",
-                    "unlockLevel": 5
-                }
-            ]
-        },
-        {
-            "id": 19,
-            "dexNumber": 19,
-            "slug": "objective-c",
-            "name": "Objective-C",
-            "category": "mobile",
-            "subTypes": [
-                "oop",
-                "legacy"
-            ],
-            "description": "Anterior ao Swift, ainda usado em projetos legados Apple.",
-            "evolvesFrom": 18,
-            "evolvesTo": null,
-            "evolutionLevel": null,
-            "baseStats": {
-                "attack": 60,
-                "defense": 70,
-                "speed": 55
-            },
-            "skills": [
-                {
-                    "id": "cocoa-power",
-                    "name": "Cocoa Power",
-                    "unlockLevel": 8
-                }
-            ]
-        },
-        {
-            "id": 20,
-            "dexNumber": 20,
-            "slug": "haskell",
-            "name": "Haskell",
-            "category": "functional",
-            "subTypes": [
-                "pure",
-                "lazy-evaluation"
-            ],
-            "description": "Linguagem funcional pura, usada em pesquisa e sistemas.",
-            "evolvesFrom": null,
-            "evolvesTo": null,
-            "evolutionLevel": null,
-            "baseStats": {
-                "attack": 70,
-                "defense": 60,
-                "speed": 45
-            },
-            "skills": [
-                {
-                    "id": "monad-blast",
-                    "name": "Monad Blast",
-                    "unlockLevel": 8
-                }
-            ]
-        }
-    ],
-    "users": [
-        {
-            "id": 1,
-            "username": "markus",
-            "starterLanguageId": 1,
-            "level": 3,
-            "xp": 250,
-            "rank": "beginner"
-        },
-        {
-            "id": 2,
-            "username": "alice",
-            "starterLanguageId": 6,
-            "level": 5,
-            "xp": 800,
-            "rank": "intermediate"
-        }
-    ],
-    "captures": [
-        {
-            "id": 1,
-            "userId": 1,
-            "languageId": 1,
-            "level": 10,
-            "xp": 1200,
-            "skillsUnlocked": [
-                "fire-script",
-                "async-blast"
-            ]
-        },
-        {
-            "id": 2,
-            "userId": 2,
-            "languageId": 6,
-            "level": 7,
-            "xp": 600,
-            "skillsUnlocked": [
-                "data-crunch"
-            ]
-        }
-    ]
+  "languages": [
+    {
+      "id": 1,
+      "dexNumber": 1,
+      "slug": "javascript",
+      "name": "JavaScript",
+      "category": "front-end",
+      "subTypes": ["dynamic", "multi-paradigm"],
+      "description": "Linguagem popular para web, ampla comunidade e ecossistema.",
+      "evolvesFrom": null,
+      "evolvesTo": 2,
+      "evolutionLevel": 10,
+      "rarity": "common",
+      "baseStats": { "attack": 55, "defense": 45, "speed": 70 },
+      "skillsPool": [
+        { "id": "fire-script", "name": "Fire Script", "power": 20, "accuracy": 95, "unlockLevel": 5, "element": "js" },
+        { "id": "async-blast", "name": "Async Blast", "power": 30, "accuracy": 90, "unlockLevel": 10, "element": "js" }
+      ]
+    },
+    {
+      "id": 2,
+      "dexNumber": 2,
+      "slug": "typescript",
+      "name": "TypeScript",
+      "category": "front-end",
+      "subTypes": ["typed", "oop"],
+      "description": "Superset do JavaScript com tipagem estática.",
+      "evolvesFrom": 1,
+      "evolvesTo": null,
+      "evolutionLevel": null,
+      "rarity": "epic",
+      "baseStats": { "attack": 65, "defense": 60, "speed": 65 },
+      "skillsPool": [
+        { "id": "type-shield", "name": "Type Shield", "power": 15, "accuracy": 100, "unlockLevel": 5, "element": "ts" },
+        { "id": "strict-mode", "name": "Strict Mode", "power": 28, "accuracy": 92, "unlockLevel": 10, "element": "ts" }
+      ]
+    },
+    {
+      "id": 3,
+      "dexNumber": 3,
+      "slug": "c",
+      "name": "C",
+      "category": "system",
+      "subTypes": ["low-level", "procedural"],
+      "description": "Linguagem clássica usada em sistemas e performance.",
+      "evolvesFrom": null,
+      "evolvesTo": 4,
+      "evolutionLevel": 12,
+      "rarity": "uncommon",
+      "baseStats": { "attack": 70, "defense": 60, "speed": 40 },
+      "skillsPool": [
+        { "id": "pointer-strike", "name": "Pointer Strike", "power": 32, "accuracy": 88, "unlockLevel": 5, "element": "c" }
+      ]
+    },
+    {
+      "id": 4,
+      "dexNumber": 4,
+      "slug": "cpp",
+      "name": "C++",
+      "category": "system",
+      "subTypes": ["oop", "multi-paradigm"],
+      "description": "Evolução do C com suporte a orientação a objetos.",
+      "evolvesFrom": 3,
+      "evolvesTo": 5,
+      "evolutionLevel": 15,
+      "rarity": "epic",
+      "baseStats": { "attack": 80, "defense": 70, "speed": 50 },
+      "skillsPool": [
+        { "id": "class-slash", "name": "Class Slash", "power": 35, "accuracy": 90, "unlockLevel": 5, "element": "cpp" }
+      ]
+    },
+    {
+      "id": 5,
+      "dexNumber": 5,
+      "slug": "csharp",
+      "name": "C#",
+      "category": "back-end",
+      "subTypes": ["oop", ".net"],
+      "description": "Linguagem moderna da Microsoft, focada em produtividade.",
+      "evolvesFrom": 4,
+      "evolvesTo": null,
+      "evolutionLevel": null,
+      "rarity": "uncommon",
+      "baseStats": { "attack": 75, "defense": 80, "speed": 55 },
+      "skillsPool": [
+        { "id": "linq-storm", "name": "LINQ Storm", "power": 30, "accuracy": 94, "unlockLevel": 10, "element": "csharp" }
+      ]
+    },
+    {
+      "id": 6,
+      "dexNumber": 6,
+      "slug": "python",
+      "name": "Python",
+      "category": "back-end",
+      "subTypes": ["general-purpose", "multi-paradigm"],
+      "description": "Muito usado em ciência de dados, automações e back-end.",
+      "evolvesFrom": null,
+      "evolvesTo": 7,
+      "evolutionLevel": 14,
+      "rarity": "common",
+      "baseStats": { "attack": 60, "defense": 50, "speed": 40 },
+      "skillsPool": [
+        { "id": "data-crunch", "name": "Data Crunch", "power": 22, "accuracy": 97, "unlockLevel": 5, "element": "py" }
+      ]
+    },
+    {
+      "id": 7,
+      "dexNumber": 7,
+      "slug": "julia",
+      "name": "Julia",
+      "category": "data-science",
+      "subTypes": ["scientific", "high-performance"],
+      "description": "Criada para alto desempenho em cálculos científicos.",
+      "evolvesFrom": 6,
+      "evolvesTo": null,
+      "evolutionLevel": null,
+      "rarity": "rare",
+      "baseStats": { "attack": 75, "defense": 55, "speed": 60 },
+      "skillsPool": [
+        { "id": "matrix-burst", "name": "Matrix Burst", "power": 34, "accuracy": 92, "unlockLevel": 10, "element": "julia" }
+      ]
+    },
+    {
+      "id": 8,
+      "dexNumber": 8,
+      "slug": "java",
+      "name": "Java",
+      "category": "back-end",
+      "subTypes": ["oop", "general-purpose"],
+      "description": "Muito usado em grandes sistemas e Android.",
+      "evolvesFrom": null,
+      "evolvesTo": 9,
+      "evolutionLevel": 16,
+      "rarity": "common",
+      "baseStats": { "attack": 65, "defense": 70, "speed": 50 },
+      "skillsPool": [
+        { "id": "jvm-armor", "name": "JVM Armor", "power": 18, "accuracy": 100, "unlockLevel": 5, "element": "java" }
+      ]
+    },
+    {
+      "id": 9,
+      "dexNumber": 9,
+      "slug": "kotlin",
+      "name": "Kotlin",
+      "category": "mobile",
+      "subTypes": ["modern", "oop"],
+      "description": "Linguagem oficial do Android, moderna e concisa.",
+      "evolvesFrom": 8,
+      "evolvesTo": null,
+      "evolutionLevel": null,
+      "rarity": "uncommon",
+      "baseStats": { "attack": 70, "defense": 65, "speed": 60 },
+      "skillsPool": [
+        { "id": "null-safety", "name": "Null Safety", "power": 26, "accuracy": 96, "unlockLevel": 8, "element": "kotlin" }
+      ]
+    },
+    {
+      "id": 10,
+      "dexNumber": 10,
+      "slug": "php",
+      "name": "PHP",
+      "category": "back-end",
+      "subTypes": ["web", "scripting"],
+      "description": "Muito usado no desenvolvimento web, especialmente WordPress.",
+      "evolvesFrom": null,
+      "evolvesTo": 11,
+      "evolutionLevel": 12,
+      "rarity": "common",
+      "baseStats": { "attack": 50, "defense": 40, "speed": 60 },
+      "skillsPool": [
+        { "id": "web-blast", "name": "Web Blast", "power": 20, "accuracy": 95, "unlockLevel": 5, "element": "php" }
+      ]
+    },
+    {
+      "id": 11,
+      "dexNumber": 11,
+      "slug": "hack",
+      "name": "Hack",
+      "category": "back-end",
+      "subTypes": ["typed", "web"],
+      "description": "Criada pelo Facebook, evolução do PHP.",
+      "evolvesFrom": 10,
+      "evolvesTo": null,
+      "evolutionLevel": null,
+      "rarity": "rare",
+      "baseStats": { "attack": 65, "defense": 55, "speed": 70 },
+      "skillsPool": [
+        { "id": "async-threads", "name": "Async Threads", "power": 28, "accuracy": 93, "unlockLevel": 8, "element": "hack" }
+      ]
+    },
+    {
+      "id": 12,
+      "dexNumber": 12,
+      "slug": "ruby",
+      "name": "Ruby",
+      "category": "back-end",
+      "subTypes": ["oop", "web"],
+      "description": "Muito usado em web (Rails), elegante e expressiva.",
+      "evolvesFrom": null,
+      "evolvesTo": 13,
+      "evolutionLevel": 14,
+      "rarity": "uncommon",
+      "baseStats": { "attack": 55, "defense": 45, "speed": 65 },
+      "skillsPool": [
+        { "id": "rails-speed", "name": "Rails Speed", "power": 24, "accuracy": 95, "unlockLevel": 5, "element": "ruby" }
+      ]
+    },
+    {
+      "id": 13,
+      "dexNumber": 13,
+      "slug": "crystal",
+      "name": "Crystal",
+      "category": "back-end",
+      "subTypes": ["compiled", "modern"],
+      "description": "Inspirada em Ruby, mas compilada e com tipagem forte.",
+      "evolvesFrom": 12,
+      "evolvesTo": null,
+      "evolutionLevel": null,
+      "rarity": "rare",
+      "baseStats": { "attack": 70, "defense": 60, "speed": 70 },
+      "skillsPool": [
+        { "id": "compiled-strike", "name": "Compiled Strike", "power": 33, "accuracy": 92, "unlockLevel": 8, "element": "crystal" }
+      ]
+    },
+    {
+      "id": 14,
+      "dexNumber": 14,
+      "slug": "go",
+      "name": "Go",
+      "category": "back-end",
+      "subTypes": ["concurrent", "compiled"],
+      "description": "Criada pelo Google, rápida e eficiente para serviços escaláveis.",
+      "evolvesFrom": null,
+      "evolvesTo": 15,
+      "evolutionLevel": 15,
+      "rarity": "rare",
+      "baseStats": { "attack": 65, "defense": 60, "speed": 75 },
+      "skillsPool": [
+        { "id": "goroutine-rush", "name": "Goroutine Rush", "power": 29, "accuracy": 94, "unlockLevel": 5, "element": "go" }
+      ]
+    },
+    {
+      "id": 15,
+      "dexNumber": 15,
+      "slug": "rust",
+      "name": "Rust",
+      "category": "system",
+      "subTypes": ["memory-safe", "modern"],
+      "description": "Segura e rápida, popular em sistemas e aplicações críticas.",
+      "evolvesFrom": 14,
+      "evolvesTo": null,
+      "evolutionLevel": null,
+      "rarity": "epic",
+      "baseStats": { "attack": 80, "defense": 80, "speed": 65 },
+      "skillsPool": [
+        { "id": "borrow-check", "name": "Borrow Check", "power": 36, "accuracy": 90, "unlockLevel": 8, "element": "rust" }
+      ]
+    },
+    {
+      "id": 16,
+      "dexNumber": 16,
+      "slug": "r",
+      "name": "R",
+      "category": "data-science",
+      "subTypes": ["statistics", "analysis"],
+      "description": "Muito usada em estatística e visualização de dados.",
+      "evolvesFrom": null,
+      "evolvesTo": 17,
+      "evolutionLevel": 10,
+      "rarity": "common",
+      "baseStats": { "attack": 50, "defense": 45, "speed": 40 },
+      "skillsPool": [
+        { "id": "data-plot", "name": "Data Plot", "power": 18, "accuracy": 98, "unlockLevel": 5, "element": "r" }
+      ]
+    },
+    {
+      "id": 17,
+      "dexNumber": 17,
+      "slug": "scala",
+      "name": "Scala",
+      "category": "back-end",
+      "subTypes": ["functional", "oop"],
+      "description": "Combina programação funcional e OOP na JVM.",
+      "evolvesFrom": 16,
+      "evolvesTo": null,
+      "evolutionLevel": null,
+      "rarity": "rare",
+      "baseStats": { "attack": 70, "defense": 60, "speed": 50 },
+      "skillsPool": [
+        { "id": "actor-model", "name": "Actor Model", "power": 31, "accuracy": 91, "unlockLevel": 8, "element": "scala" }
+      ]
+    },
+    {
+      "id": 18,
+      "dexNumber": 18,
+      "slug": "swift",
+      "name": "Swift",
+      "category": "mobile",
+      "subTypes": ["modern", "safe"],
+      "description": "Linguagem oficial da Apple para iOS e macOS.",
+      "evolvesFrom": null,
+      "evolvesTo": 19,
+      "evolutionLevel": 12,
+      "rarity": "rare",
+      "baseStats": { "attack": 65, "defense": 55, "speed": 75 },
+      "skillsPool": [
+        { "id": "swift-ui", "name": "Swift UI", "power": 25, "accuracy": 96, "unlockLevel": 5, "element": "swift" }
+      ]
+    },
+    {
+      "id": 19,
+      "dexNumber": 19,
+      "slug": "objective-c",
+      "name": "Objective-C",
+      "category": "mobile",
+      "subTypes": ["oop", "legacy"],
+      "description": "Anterior ao Swift, ainda usado em projetos legados Apple.",
+      "evolvesFrom": 18,
+      "evolvesTo": null,
+      "evolutionLevel": null,
+      "rarity": "uncommon",
+      "baseStats": { "attack": 60, "defense": 70, "speed": 55 },
+      "skillsPool": [
+        { "id": "cocoa-power", "name": "Cocoa Power", "power": 27, "accuracy": 92, "unlockLevel": 8, "element": "objc" }
+      ]
+    },
+    {
+      "id": 20,
+      "dexNumber": 20,
+      "slug": "haskell",
+      "name": "Haskell",
+      "category": "functional",
+      "subTypes": ["pure", "lazy-evaluation"],
+      "description": "Linguagem funcional pura, usada em pesquisa e sistemas.",
+      "evolvesFrom": null,
+      "evolvesTo": null,
+      "evolutionLevel": null,
+      "rarity": "legendary",
+      "baseStats": { "attack": 70, "defense": 60, "speed": 45 },
+      "skillsPool": [
+        { "id": "monad-blast", "name": "Monad Blast", "power": 38, "accuracy": 88, "unlockLevel": 8, "element": "hs" }
+      ]
+    }
+  ],
+  "users": [
+    { "id": 1, "username": "markus", "starterLanguageId": 1, "level": 3, "xp": 250, "rank": "beginner" },
+    { "id": 2, "username": "alice", "starterLanguageId": 6, "level": 5, "xp": 800, "rank": "intermediate" }
+  ],
+  "captures": [
+    { "id": 1, "userId": 1, "languageId": 1, "level": 10, "xp": 1200, "skillsUnlocked": ["fire-script", "async-blast"] },
+    { "id": 1, "userId": 1, "languageId": 2, "level": 1, "xp": 1, "skillsUnlocked": [] },
+    { "id": 1, "userId": 1, "languageId": 6, "level": 1, "xp": 1, "skillsUnlocked": [] },
+    { "id": 2, "userId": 2, "languageId": 6, "level": 7, "xp": 600, "skillsUnlocked": ["data-crunch"] }
+  ]
 }

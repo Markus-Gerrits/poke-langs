@@ -40,13 +40,13 @@ const rarityPills: Record<Rarity, string> = {
 
 const LangCard: React.FC<LangCardProps> = ({ id, name, category, owned, icon, rarity = "common" }) => {
     const gradient = categoryGradients[owned ? category : "default"] ?? categoryGradients["default"];
-    const bgUrl = `url('/src/assets/backgrounds/${owned ? name.toLocaleLowerCase() : 'locker'}.png')`;
+    const bgUrl = `url('/src/assets/backgrounds/${owned ? icon : 'locker'}.png')`;
     const langImg = owned && icon ? icon : "locker";
 
     return (
         // Wrapper com BORDA gradiente da categoria
         <div
-            className={`group inline-block rounded-2xl p-[2px] bg-gradient-to-br ${gradient}
+            className={`group inline-block rounded-2xl p-[4px] bg-gradient-to-br ${gradient}
               shadow-xl cursor-pointer transform-gpu
               transition-transform duration-300 ease-out
               hover:-translate-y-2 hover:scale-[1.02] hover:shadow-2xl

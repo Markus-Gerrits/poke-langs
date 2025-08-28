@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import type { Language, Rarity, Skill } from "../api/types"
 import { createPortal } from "react-dom";
 
@@ -26,16 +26,29 @@ const categoryPills: Record<Language["category"] | "default", string> = {
 };
 
 export default function LangDetailModal({ lang, onClose }: Props) {
+    const modalRoot = document.getElementById("modal-root") || document.body;
+    const [open, setOpen] = useState(false);
+
     useEffect(() => {
         const prev = document.body.style.overflow;
         document.body.style.overflow = "hidden";
-        const onKey = (e: KeyboardEvent) => e.key === "Escape" && onClose();
+
+        const t = setTimeout(() => setOpen(true), 0);
+
+        const onKey = (e: KeyboardEvent) => e.key === "Escape" && requestClose();
         window.addEventListener("keydown", onKey);
+
         return () => {
+            clearTimeout(t);
             document.body.style.overflow = prev;
             window.removeEventListener("keydown", onKey);
         };
-    }, [onClose]);
+    }, []);
+
+    function requestClose() {
+        setOpen(false);
+        setTimeout(() => onClose(), 220);
+    }
 
     const bgUrl = `url('/src/assets/backgrounds/${lang.slug ?? lang.name.toLowerCase()}.png')`;
     const iconUrl = `/src/assets/icons/${lang.slug ?? lang.name.toLowerCase()}.png`;
@@ -44,7 +57,6 @@ export default function LangDetailModal({ lang, onClose }: Props) {
         (a: Skill, b: Skill) => (a.unlockLevel ?? 0) - (b.unlockLevel ??0)
     );
 
-    const modalRoot = document.getElementById("modal-root");
 
     if (!modalRoot) {
         return createPortal(<> {/* backdrop + dialog */} </>, document.body);
@@ -53,23 +65,27 @@ export default function LangDetailModal({ lang, onClose }: Props) {
     return createPortal(
         <>
             {/* Backdrop */}
-            <div className="fixed inset-0 z-40 bg-black/70 backdrop-blur-sm" onClick={onClose} />
+            <div className={`fixed inset-0 z-40 bg-black/70 backdrop-blur-sm
+              transition-opacity duration-200 ${open ? "opacity-100" : "opacity-0"}`} onClick={requestClose} />
 
             {/* Dialog */}
             <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
                 <div
                     role="dialog"
                     aria-modal="true"
-                    className="w-full max-w-5xl rounded-3xl overflow-hidden shadow-2xl bg-white text-slate-900
-                     dark:bg-slate-900 dark:text-slate-100"
+                    className={`w-full max-w-5xl rounded-3xl overflow-hidden shadow-2xl
+                                bg-white text-slate-900 dark:bg-slate-900 dark:text-slate-100
+                                transform-gpu transition-all duration-200
+                                ${open ? "opacity-100 scale-100 translate-y-0" : "opacity-0 scale-95 translate-y-2"}`}
                     onClick={(e) => e.stopPropagation()}
                 >
                     {/* Top bar close */}
                     <div className="flex justify-end p-3">
                         <button
-                            onClick={onClose}
-                            className="inline-flex items-center justify-center cursor-pointer w-9 h-9 rounded-full bg-red-600 text-white hover:bg-red-500 active:bg-red-700 focus-visible:outline-none focus visible:ring-2 focus-visible:ring-white/70"
-                            aria-label="Fechar detalhes"
+                            onClick={requestClose}
+                            className="inline-flex items-center justify-center w-9 h-9 rounded-full
+                                bg-red-600 text-white hover:bg-red-500 active:bg-red-700
+                                focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70"
                             autoFocus
                         >
                             X

@@ -3,6 +3,7 @@ import LangCard from "../components/LangCard";
 import type { Language } from "../api/types";
 import { useEffect, useMemo, useState } from "react";
 import { getLanguages, getUserCaptures } from "../api/langdex";
+import LangDetailModal from "../components/LangDetailModal";
 
 type LangView = Language & {
     owned: boolean;
@@ -13,6 +14,7 @@ const LangDex: React.FC = () => {
     const [langs, setLangs] = useState<LangView[]>([]);
     const [loading, setLoading] = useState(true);
     const [err, setErr] = useState<string | null>(null);
+    const [selected, setSelected] = useState<LangView | null>(null);
 
     useEffect(() => {
         (async () => {
@@ -28,7 +30,6 @@ const LangDex: React.FC = () => {
                     owned: ownedSet.has(String(lang.id)),
                     icon: lang.slug,
                 }));
-
                 setLangs(withOwned);
             } catch (e: any) {
                 setErr(e.message ?? "Erro desconhecido");
@@ -54,6 +55,7 @@ const LangDex: React.FC = () => {
     return (
         <div className="p-6">
             <h1 className="text-2xl font-bold text-center mb-6">📘 LangDex</h1>
+            
             <div className="flex flex-wrap gap-5 justify-center">
                 {ordered.map((lang: LangView) => (
                     <LangCard
@@ -64,9 +66,17 @@ const LangDex: React.FC = () => {
                         owned={lang.owned}
                         icon={lang.slug}
                         rarity={lang.rarity}
+                        onClick={() => lang.owned && setSelected(lang)}
                     />       
                 ))}
             </div>
+
+            {selected && selected.owned && (
+                <LangDetailModal
+                    lang={selected}
+                    onClose={() => setSelected(null)}
+                />
+            )}
         </div>
     )
 }

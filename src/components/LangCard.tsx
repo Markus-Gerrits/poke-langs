@@ -18,6 +18,7 @@ interface LangCardProps {
     owned: boolean;
     icon?: string;
     rarity: Rarity;
+    onClick?: () => void;
 }
 
 const categoryGradients: Record<Category, string> = {
@@ -38,7 +39,7 @@ const rarityPills: Record<Rarity, string> = {
     legendary: "bg-amber-500/30 border-amber-300/40",
 };
 
-const LangCard: React.FC<LangCardProps> = ({ id, name, category, owned, icon, rarity = "common" }) => {
+const LangCard: React.FC<LangCardProps> = ({ id, name, category, owned, icon, rarity = "common", onClick }) => {
     const gradient = categoryGradients[owned ? category : "default"] ?? categoryGradients["default"];
     const bgUrl = `url('/src/assets/backgrounds/${owned ? icon : 'locker'}.png')`;
     const langImg = owned && icon ? icon : "locker";
@@ -47,14 +48,15 @@ const LangCard: React.FC<LangCardProps> = ({ id, name, category, owned, icon, ra
         // Wrapper com BORDA gradiente da categoria
         <div
             className={`group inline-block rounded-2xl p-[4px] bg-gradient-to-br ${gradient}
-              shadow-xl cursor-pointer transform-gpu
-              transition-transform duration-300 ease-out
-              hover:-translate-y-2 hover:scale-[1.02] hover:shadow-2xl
-              active:scale-[0.99]
-              focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70`}
+                shadow-xl ${owned ? "cursor-pointer" : "cursor-not-allowed opacity-95"}
+                transform-gpu transition-transform duration-300 ease-out
+                ${owned ? "hover:-translate-y-2 hover:scale-[1.02] hover:shadow-2xl active:scale-[0.99]" : ""}
+                focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70`}
             role="button"
-            tabIndex={0}
+            tabIndex={owned ? 0 : -1}
+            aria-disabled={!owned}
             aria-label={owned ? `${name} card` : "Locked card"}
+            onClick={owned ? onClick : undefined}
         >
             {/* Corpo do card */}
             <div

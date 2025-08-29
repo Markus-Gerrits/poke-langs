@@ -43,7 +43,7 @@ export default function LangDetailModal({ lang, onClose }: Props) {
             document.body.style.overflow = prev;
             window.removeEventListener("keydown", onKey);
         };
-    }, []);
+    });
 
     function requestClose() {
         setOpen(false);

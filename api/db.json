@@ -324,7 +324,7 @@
       "skillsPool": [
         { "id": "cocoa-power", "name": "Cocoa Power", "power": 27, "accuracy": 92, "unlockLevel": 8, "element": "objc" }
       ]
-    },
+  },
     {
       "id": 20,
       "dexNumber": 20,
@@ -344,8 +344,8 @@
     }
   ],
   "users": [
-    { "id": 1, "username": "markus", "starterLanguageId": 1, "level": 3, "xp": 250, "rank": "beginner" },
-    { "id": 2, "username": "alice", "starterLanguageId": null, "level": 1, "xp": 1, "rank": "beginner" }
+    { "id": 1, "nickname": "Markus", "level": 3, "xp": 120, "nextLevelXp": 200, "avatarUrl": "" },
+    { "id": 2, "nickname": "alice", "level": 1, "xp": 1, "nextLevelXp": 100, "avatarUrl": "" }
   ],
   "captures": [
     { "id": 1, "userId": 1, "languageId": 1, "level": 10, "xp": 1200, "skillsUnlocked": ["fire-script", "async-blast"] },

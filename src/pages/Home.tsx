@@ -1,10 +1,11 @@
 import type React from "react";
 import { useNavigate } from "react-router-dom";
-import type { Language } from "../api/types";
+import type { Language, User } from "../api/types";
 import { useEffect, useMemo, useState } from "react";
-import { getLanguages, getUserCaptures } from "../api/langdex";
+import { getLanguages, getUser, getUserCaptures } from "../api/langdex";
+import { UserSummaryCard } from "../components/UserSummaryCard";
 
-const USER_ID = 2;
+const USER_ID = 1;
 
 type Category =
   | "front-end"
@@ -45,34 +46,32 @@ type CapturedView = {
 const Home: React.FC = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
-  const [err, setErr] = useState<string | null>(null);
   const [languages, setLanguages] = useState<Language[]>([]);
   const [captures, setCaptures] = useState<Capture[]>([]);
+  const [user, setUser] = useState<User | null>(null);
 
   useEffect(() => {
-    let mounted = true;
+    const ac = new AbortController();
     (async () => {
       try {
         setLoading(true);
-        const [langs, caps] = await Promise.all([
+        const [langs, caps, usr] = await Promise.all([
           getLanguages(),
           getUserCaptures(USER_ID),
+          getUser(USER_ID, { signal: ac.signal })
         ]);
-        if (!mounted) return;
         setLanguages(langs);
         setCaptures(caps as unknown as Capture[]);
-        setErr(null);
+        setUser(usr)
       } catch (e: any) {
-        setErr(e?.message ?? "Erro ao carregar dados");
-      } finally {
-        if (mounted) {
-          setLoading(false);
+        if (!user) {
+          setUser({ id: USER_ID, nickname: "Programador(a)", level: 1, xp: 0, nextLevelXp: 100});
         }
+      } finally {
+        setLoading(false);
       }
     })();
-    return () => {
-      mounted = false;
-    };
+    return () => ac.abort();
   }, []);
 
   const captured: CapturedView[] = useMemo(() => {
@@ -102,7 +101,7 @@ const Home: React.FC = () => {
           dexNumber: lang.dexNumber
         }
       })
-      .sort((a, b) => a.level - b.level);
+      .sort((a, b) => a.level + b.level);
   }, [languages, captures]);
 
   const total = languages.length;
@@ -137,12 +136,12 @@ const Home: React.FC = () => {
     );
   }
 
-  if (err) {
+  if (!user) {
     return (
       <div className="p-6">
         <h1 className="text-2xl font-bold text-center mb-6">🏠 Página Inicial</h1>
         <div className="max-w-3xl mx-auto p-4 rounded-lg bg-red-500/10 border border-red-400/30 text-red-200">
-          Erro: {err}
+          Não foi possível carregar o usuário.
         </div>
       </div>
     );
@@ -153,6 +152,12 @@ const Home: React.FC = () => {
     <div className="p-6">
       <h1 className="text-2xl font-bold text-center mb-6">🏠 Página Inicial</h1>
 
+      <UserSummaryCard
+        user={user}
+        capturedCount={have}
+        totalLangs={total}
+        onStartJourney={handleStartJourney}
+      />
       <section className="max-w-6xl mx-auto">
         <header className="mb-4 flex items-center justify-between">
           <h2 className="text-lg font-semibold">

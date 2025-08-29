@@ -33,3 +33,12 @@ export interface Capture {
     xp: number;
     skillsUnlocked: string[];
 }
+
+export type User = {
+  id: number;
+  nickname: string;
+  level: number;
+  xp: number;
+  nextLevelXp: number;
+  avatarUrl?: string;
+};

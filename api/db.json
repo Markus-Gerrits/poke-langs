@@ -345,7 +345,7 @@
   ],
   "users": [
     { "id": 1, "username": "markus", "starterLanguageId": 1, "level": 3, "xp": 250, "rank": "beginner" },
-    { "id": 2, "username": "alice", "starterLanguageId": 6, "level": 5, "xp": 800, "rank": "intermediate" }
+    { "id": 2, "username": "alice", "starterLanguageId": null, "level": 1, "xp": 1, "rank": "beginner" }
   ],
   "captures": [
     { "id": 1, "userId": 1, "languageId": 1, "level": 10, "xp": 1200, "skillsUnlocked": ["fire-script", "async-blast"] },
@@ -367,7 +367,6 @@
     { "id": 1, "userId": 1, "languageId": 17, "level": 1, "xp": 1, "skillsUnlocked": [] },
     { "id": 1, "userId": 1, "languageId": 18, "level": 1, "xp": 1, "skillsUnlocked": [] },
     { "id": 1, "userId": 1, "languageId": 19, "level": 1, "xp": 1, "skillsUnlocked": [] },
-    { "id": 1, "userId": 1, "languageId": 20, "level": 1, "xp": 1, "skillsUnlocked": [] },
-    { "id": 2, "userId": 2, "languageId": 6, "level": 7, "xp": 600, "skillsUnlocked": ["data-crunch"] }
+    { "id": 1, "userId": 1, "languageId": 20, "level": 1, "xp": 1, "skillsUnlocked": [] }
   ]
 }

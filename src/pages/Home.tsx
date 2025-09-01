@@ -1,9 +1,9 @@
 import type React from "react";
-import { useNavigate } from "react-router-dom";
-import type { Language, User } from "../api/types";
 import { useEffect, useMemo, useState } from "react";
-import { getLanguages, getUser, getUserCaptures } from "../api/langdex";
+import { useNavigate } from "react-router-dom";
+import { getLanguages, getUserCaptures, getUser } from "../api/langdex";
 import { UserSummaryCard } from "../components/UserSummaryCard";
+import type { Language, User } from "../api/types";
 
 const USER_ID = 1;
 
@@ -31,21 +31,22 @@ type Capture = {
   userId: number;
   languageId: number;
   level: number;
-  xp: number;
-}
+};
 
-type CapturedView = {
-  id: number;
+type ChipView = {
+  id: string;
+  languageId: number;
   name: string;
-  category: Category;
   level: number;
-  slug: string;
+  category: Category;
+  slug?: string;
   dexNumber: number;
-}
+};
 
 const Home: React.FC = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
+  const [err, setErr] = useState<string | null>(null);
   const [languages, setLanguages] = useState<Language[]>([]);
   const [captures, setCaptures] = useState<Capture[]>([]);
   const [user, setUser] = useState<User | null>(null);
@@ -58,71 +59,85 @@ const Home: React.FC = () => {
         const [langs, caps, usr] = await Promise.all([
           getLanguages(),
           getUserCaptures(USER_ID),
-          getUser(USER_ID, { signal: ac.signal })
+          getUser(USER_ID, { signal: ac.signal }),
         ]);
         setLanguages(langs);
         setCaptures(caps as unknown as Capture[]);
-        setUser(usr)
+        setUser(usr);
+        setErr(null);
       } catch (e: any) {
         if (!user) {
-          setUser({ id: USER_ID, nickname: "Programador(a)", level: 1, xp: 0, nextLevelXp: 100});
+          setUser({
+            id: USER_ID,
+            nickname: "Programador(a)",
+            level: 1,
+            xp: 0,
+            nextLevelXp: 100,
+          });
         }
+        setErr(null);
       } finally {
         setLoading(false);
       }
     })();
     return () => ac.abort();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const captured: CapturedView[] = useMemo(() => {
-    if (!languages.length || !captures.length) {
-      return [];
-    }
+  const langById = useMemo(() => {
+    const m = new Map<number, Language>();
+    languages.forEach((l) => m.set(Number(l.id), l));
+    return m;
+  }, [languages]);
 
-    const capByLang = new Map<number, Capture>();
+  const uniqueCapturedCount = useMemo(() => {
+    const s = new Set<number>();
+    captures.forEach((c) => s.add(c.languageId));
+    return s.size;
+  }, [captures]);
 
-    captures.forEach((c) => {
-      const prev = capByLang.get(c.languageId);
-      if (!prev || (prev.level ?? 0) < (c.level ?? 0)) {
-        capByLang.set(c.languageId, c);
-      }
-    });
-
-    return languages
-      .filter((lang: Language) => capByLang.has(Number(lang.id)))
-      .map((lang: Language) => {
-        const cap = capByLang.get(Number(lang.id))!;
+  const top10: ChipView[] = useMemo(() => {
+    if (!captures.length || !languages.length) return [];
+    const sorted = [...captures].sort((a, b) => (b.level ?? 0) - (a.level ?? 0));
+    return sorted.slice(0, 10).map((cap, idx) => {
+      const l = langById.get(Number(cap.languageId));
+      if (!l) {
         return {
-          id: lang.id,
-          name: lang.name,
-          category: (lang.category ?? "default") as Category,
+          id: `missing-${cap.id}-${idx}`,
+          languageId: cap.languageId,
+          name: `#${cap.languageId}`,
           level: cap.level ?? 1,
-          slug: lang.slug,
-          dexNumber: lang.dexNumber
-        }
-      })
-      .sort((a, b) => a.level + b.level);
-  }, [languages, captures]);
+          category: "default",
+          slug: undefined,
+          dexNumber: cap.languageId,
+        } as ChipView;
+      }
+      return {
+        id: `${cap.id}-${idx}`,
+        languageId: l.id,
+        name: l.name,
+        level: cap.level ?? 1,
+        category: (l.category ?? "default") as Category,
+        slug: (l as any).slug,
+        dexNumber: (l as any).dexNumber ?? l.id,
+      };
+    });
+  }, [captures, languages, langById]);
 
-  const total = languages.length;
-  const have = captured.length;
-  
-  const handleStartJourney = () => {
-    navigate("/starter");
-  };
+  const totalLangs = languages.length;
+
+  const handleStartJourney = () => navigate("/starter");
+  const handleSeeAll = () => navigate("/bag"); // “mochila” (ajuste a rota quando implementar)
 
   if (loading) {
     return (
       <div className="p-6">
         <h1 className="text-2xl font-bold text-center mb-6">🏠 Página Inicial</h1>
-        <div className="max-w-6xl mx-auto animate-pulse">
-          <div className="h-5 w-40 bg-white/10 rounded mb-4" />
-          <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+        <div className="max-w-6xl mx-auto">
+          <div className="mb-6 animate-pulse h-28 rounded-3xl bg-white/5" />
+          <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 animate-pulse">
             {Array.from({ length: 8 }).map((_, i) => (
-              <div
-                key={i}
-                className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 p-3"
-              >
+              <div key={i} className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 p-3">
                 <div className="w-14 h-14 rounded-full bg-white/10" />
                 <div className="flex-1">
                   <div className="h-4 w-28 bg-white/10 rounded mb-1" />
@@ -147,45 +162,54 @@ const Home: React.FC = () => {
     );
   }
 
+  const hasAny = captures.length > 0;
 
   return (
     <div className="p-6">
       <h1 className="text-2xl font-bold text-center mb-6">🏠 Página Inicial</h1>
 
+      {/* User Sumamary */}
       <UserSummaryCard
         user={user}
-        capturedCount={have}
-        totalLangs={total}
-        onStartJourney={handleStartJourney}
+        uniqueCapturedCount={uniqueCapturedCount}
+        totalLangs={totalLangs}
+        onStartJourney={!hasAny ? handleStartJourney : undefined}
       />
+
+      {/* Top 10 List language */}
       <section className="max-w-6xl mx-auto">
         <header className="mb-4 flex items-center justify-between">
-          <h2 className="text-lg font-semibold">
-            Minhas linguagens {total ? <span className="opacity-70">{have}/{total}</span> : null}
-          </h2>
-          {/* Filters/Actions */}
+          <h2 className="text-lg font-semibold">Minhas Linguagens</h2>
+          {hasAny && (
+            <button
+              onClick={handleSeeAll}
+              className="text-sm px-3 py-1.5 rounded-lg border border-white/15
+                         bg-white/5 hover:bg-white/10 transition cursor-pointer"
+            >
+              Ver todos
+            </button>
+          )}
         </header>
 
-        {captured.length > 0 ? (
+        {hasAny ? (
           <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-            {captured.map((l) => (
+            {top10.map((item) => (
               <CapturedLangChip
-                key={l.id}
-                name={l.name}
-                level={l.level}
-                category={l.category}
-                slug={l.slug}
+                key={item.id}
+                name={item.name}
+                level={item.level}
+                category={item.category}
+                slug={item.slug}
               />
             ))}
           </div>
         ) : (
-          <div className="text-center mt-14">
-            <p className="mb-4 opacity-80">
-              Você ainda não capturou nenhuma linguagem.
-            </p>
+          <div className="text-center mt-10">
+            <p className="mb-4 opacity-80">Você ainda não capturou nenhuma linguagem.</p>
             <button
               onClick={handleStartJourney}
-              className="px-6 py-3 bg-blue-500 text-white rounded-lg shadow hover:bg-blue-600 active:bg-blue-700 transition"
+              className="px-6 py-3 bg-blue-500 text-white rounded-lg shadow
+                         hover:bg-blue-600 active:bg-blue-700 transition"
             >
               Começar Jornada
             </button>
@@ -202,18 +226,19 @@ type ChipProps = {
   name: string;
   level: number;
   category: Category;
-  slug: string;
-}
+  slug?: string;
+};
 
-function CapturedLangChip({ name, level, category, slug}: ChipProps) {
+function CapturedLangChip({ name, level, category, slug }: ChipProps) {
   const ring = ringGradients[category] || ringGradients.default;
-  const iconUrl = `/src/assets/icons/${slug}.png`;
+  const iconUrl = `/src/assets/icons/${slug || name.toLowerCase()}.png`;
 
   return (
     <div
-      className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 dark:bg-white/5 p-3 shadow-sm hover:shadow-md transition hover:bg-white/10"
+      className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5
+                 p-3 shadow-sm hover:shadow-md transition hover:bg-white/10 cursor-pointer"
     >
-      {/* Avatar whit gradient ring */}
+      {/* Avatar gradient */}
       <div className={`relative w-14 h-14 rounded-full p-[3px] bg-gradient-to-br ${ring}`}>
         <div className="w-full h-full rounded-full overflow-hidden bg-slate-900 flex items-center justify-center">
           <img

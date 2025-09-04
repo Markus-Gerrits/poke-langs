@@ -97,7 +97,7 @@ const DialogBox: React.FC<Props> = ({
           <button
             onClick={onNext}
             className="absolute bottom-3 right-4 text-yellow-300 text-sm hover:text-yellow-200
-                       focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60 rounded px-2 py-1"
+                       focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60 rounded px-2 py-1 cursor-pointer"
           >
             {nextLabel}
           </button>

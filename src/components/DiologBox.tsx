@@ -7,36 +7,14 @@ type Props = {
   nextLabel?: string;
   className?: string;
 
-  /** Retrato embutido (opcional) */
   portraitSrc?: string;
   portraitAlt?: string;
-  /**
-   * Lado do retrato em relação ao balão. Default: "right"
-   * (O alinhamento é feito pelo centro do retrato para ser ultrawide-safe.)
-   */
   portraitSide?: "left" | "right";
-  /**
-   * Altura do retrato relativa ao viewport. Default: 56 (vh).
-   * O retrato nunca ultrapassa esse valor e não cria scroll.
-   */
   portraitHeightVh?: number;
-  /**
-   * Quanto o retrato “invade” o balão (em px). Default: 24
-   * Valores maiores fazem o retrato sobrepor um pouco mais por trás do balão.
-   */
   portraitOverlapPx?: number;
-  /**
-   * Ajuste fino de posicionamento horizontal.
-   * Por padrão centralizamos o retrato ~60–64% da tela quando à direita,
-   * e ~36–40% quando à esquerda (bom para UI no centro).
-   * Se quiser outro ponto, passe leftPercent manualmente (0–100).
-   */
   portraitLeftPercent?: number;
-  /** Estilos extras no retrato (caso queira override total) */
   portraitStyle?: React.CSSProperties;
   portraitClassName?: string;
-
-  /** Mostrar um leve “chão/vignette” entre retrato e balão. Default: true */
   showGroundFade?: boolean;
 };
 
@@ -55,7 +33,7 @@ const DialogBox: React.FC<Props> = ({
   portraitLeftPercent,
   portraitStyle,
   portraitClassName,
-  showGroundFade = true,
+  showGroundFade = false,
 }) => {
   const defaultLeft =
     portraitLeftPercent ??

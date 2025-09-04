@@ -917,14 +917,6 @@
       "level": 1,
       "xp": 1,
       "skillsUnlocked": []
-    },
-    {
-      "id": "4b13",
-      "userId": 3,
-      "languageId": 6,
-      "level": 5,
-      "xp": 1,
-      "skillsUnlocked": []
     }
   ]
 }

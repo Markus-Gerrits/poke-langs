@@ -6,6 +6,7 @@ import LangDex from "./pages/Langdex";
 import Battle from "./pages/Battle";
 import Navbar from "./components/Navbar";
 import StarterPage from "./pages/StarterPage";
+import Capture from "./pages/Capture";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
@@ -14,6 +15,7 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
       <Routes>
         <Route path="/" element={<Home />}/>
         <Route path="/langdex" element={<LangDex />}/>
+        <Route path="/capture" element={<Capture />}/>
         <Route path="/battle" element={<Battle />}/>
         <Route path="/starter" element={<StarterPage />} />
       </Routes>

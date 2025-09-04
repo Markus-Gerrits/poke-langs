@@ -1,6 +1,6 @@
 import type React from "react";
 import LangCard from "../components/LangCard";
-import type { Language } from "../api/types";
+import { USER_ID, type Language } from "../api/types";
 import { useEffect, useMemo, useState } from "react";
 import { getLanguages, getUserCaptures } from "../api/langdex";
 import LangDetailModal from "../components/LangDetailModal";
@@ -21,7 +21,7 @@ const LangDex: React.FC = () => {
             try {
                 const [languages, captures] = await Promise.all([
                     getLanguages(),
-                    getUserCaptures(1),
+                    getUserCaptures(USER_ID),
                 ]);
 
                 const ownedSet = new Set(captures.map(capture => String(capture.languageId)));

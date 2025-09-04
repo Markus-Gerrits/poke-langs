@@ -1,3 +1,5 @@
+export const USER_ID = 1;
+
 export type Rarity = "common"|"uncommon"|"rare"|"epic"|"legendary";
 
 export interface Skill {

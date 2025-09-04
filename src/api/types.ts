@@ -1,4 +1,4 @@
-export const USER_ID = 1;
+export const USER_ID = 3;
 
 export type Rarity = "common"|"uncommon"|"rare"|"epic"|"legendary";
 
@@ -32,8 +32,8 @@ export interface Capture {
     userId: number;
     languageId: number;
     level: number;
-    xp: number;
-    skillsUnlocked: string[];
+    xp?: number;
+    skillsUnlocked?: string[];
 }
 
 export type User = {

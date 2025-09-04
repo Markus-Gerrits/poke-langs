@@ -653,6 +653,14 @@
       "xp": 1,
       "nextLevelXp": 100,
       "avatarUrl": ""
+    },
+    {
+      "id": "3",
+      "nickname": "Miller",
+      "level": 1,
+      "xp": 1,
+      "nextLevelXp": 100,
+      "avatarUrl": ""
     }
   ],
   "captures": [
@@ -907,6 +915,14 @@
       "userId": 2,
       "languageId": 8,
       "level": 1,
+      "xp": 1,
+      "skillsUnlocked": []
+    },
+    {
+      "id": "4b13",
+      "userId": 3,
+      "languageId": 6,
+      "level": 5,
       "xp": 1,
       "skillsUnlocked": []
     }

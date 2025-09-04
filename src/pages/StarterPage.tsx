@@ -7,7 +7,6 @@ const StarterPage: React.FC = () => {
 
     const handleSelect = (id: number) => {
         setStarterId(id);
-        console.log("Linguagem inicial escolhida:", id);
     }
 
     return (

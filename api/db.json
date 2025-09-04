@@ -653,6 +653,14 @@
       "xp": 1,
       "nextLevelXp": 100,
       "avatarUrl": ""
+    },
+    {
+      "id": "3",
+      "nickname": "Miller",
+      "level": 1,
+      "xp": 1,
+      "nextLevelXp": 100,
+      "avatarUrl": ""
     }
   ],
   "captures": [

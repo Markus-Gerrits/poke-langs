@@ -3,9 +3,7 @@ import { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { getLanguages, getUserCaptures, getUser } from "../api/langdex";
 import { UserSummaryCard } from "../components/UserSummaryCard";
-import type { Language, User } from "../api/types";
-
-const USER_ID = 1;
+import { USER_ID, type Language, type User } from "../api/types";
 
 type Category =
   | "front-end"

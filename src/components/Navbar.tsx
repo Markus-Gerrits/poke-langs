@@ -26,6 +26,14 @@ export default function Navbar() {
                             </Link>
                         </li>
                         <li>
+                            <Link 
+                                to="/capture"
+                                className="hover:text-yellow-300 transition-colors duration-200"
+                            >
+                                Capturar
+                            </Link>
+                        </li>
+                        <li>
                             <Link
                                 to="/battle"
                                 className="hover:text-yellow-300 transition-colors duration-200"

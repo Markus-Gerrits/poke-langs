@@ -1,8 +1,16 @@
-import { api, fetchJSON } from "./client";
-import type { Language, Capture, User } from "./types";
+import type { Capture, Language, User } from "./types";
+import { getJSON, postJSON } from "./client";
 
-export const getLanguages = () => api<Language[]>("/languages?_sort=dexNumber&_order=asc");
+export const getLanguages = (o?: { signal?: AbortSignal }) =>
+  getJSON<Language[]>("/languages", o);
 
-export const getUserCaptures = (userId = 1) => api<Capture[]>(`/captures?userId=${userId}`);
+export const getUserCaptures = (userId: number, o?: { signal?: AbortSignal }) =>
+  getJSON<Capture[]>(`/captures?userId=${userId}`, o);
 
-export const getUser = (id: number, o?: {signal?: AbortSignal }) => fetchJSON<User>(`/users/${id}`, o);
+export const getUser = (id: number, o?: { signal?: AbortSignal }) =>
+  getJSON<User>(`/users/${id}`, o);
+
+export const createCapture = (
+  payload: Omit<Capture, "id">,
+  o?: { signal?: AbortSignal }
+) => postJSON<Capture>("/captures", payload, o);
